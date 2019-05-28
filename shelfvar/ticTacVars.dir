@@ -1,0 +1,3 @@
+'theBoard', (0, 140)
+'avail_chars', (512, 28)
+'players', (1024, 6)

@@ -142,11 +142,8 @@ def resetgameVar():
     return (theBoard, avail_chars)
 
 def playIter():
-    gameVar = shelve.open(os.path.join(os.path.abspath('.'), 'shelfvar', 'ticTacVars')) #a shelf file with game variables stored
-    theBoard = gameVar['theBoard'] #the game board variable is retrieved from the shelf file
-    avail_chars = gameVar['avail_chars'] #the game characters are retrieved from the shelf file
-    gamePlayVars = getUsersVar(avail_chars)
-    playerVars = gamePlay(theBoard, avail_chars, gamePlayVars)   
+    gamePlayVars = getUsersVar(resetgameVar()[1])
+    playerVars = gamePlay(resetgameVar()[0], resetgameVar()[1], gamePlayVars)   
     while True:
         print("Would you like to play again? Reply with 'Y' to replay and 'N' to exit")
         while True:
@@ -161,5 +158,7 @@ def playIter():
             print('__' * 20)
             gamePlay(resetgameVar()[0], resetgameVar()[1], playerVars)
         elif reply == 'N':
-            gameVar.close()
             break
+
+
+#playIter() ------- uncomment code to play
